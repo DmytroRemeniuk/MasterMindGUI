@@ -17,6 +17,12 @@ namespace MasterMindGUI
             InitializeComponent();
         }
 
+        /// <summary>
+        /// Evénements pour entrer des couleurs
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        #region Enter the colors
         private void btnRed_Click(object sender, EventArgs e)
         {
             if (btnGuess1.ForeColor == Color.Gray)
@@ -211,6 +217,31 @@ namespace MasterMindGUI
                 btnGuess4.BackColor = Color.Magenta;
                 btnGuess4.Text = "M";
             }
+        }
+        #endregion
+
+        /// <summary>
+        /// Un événement pour effacer les couleurs entrées
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnErase_Click(object sender, EventArgs e)
+        {
+            btnGuess1.BackColor = Color.Gray;
+            btnGuess1.ForeColor = Color.Gray;
+            btnGuess1.Text = "";
+
+            btnGuess2.BackColor = Color.Gray;
+            btnGuess2.ForeColor = Color.Gray;
+            btnGuess2.Text = "";
+
+            btnGuess3.BackColor = Color.Gray;
+            btnGuess3.ForeColor = Color.Gray;
+            btnGuess3.Text = "";
+
+            btnGuess4.BackColor = Color.Gray;
+            btnGuess4.ForeColor = Color.Gray;
+            btnGuess4.Text = "";
         }
     }
 }

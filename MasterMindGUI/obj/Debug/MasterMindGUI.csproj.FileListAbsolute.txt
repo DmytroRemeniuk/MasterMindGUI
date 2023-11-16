@@ -9,3 +9,5 @@ D:\Programmation C#\MasterMindGUI\MasterMindGUI\obj\Debug\MasterMindGUI.csproj.G
 D:\Programmation C#\MasterMindGUI\MasterMindGUI\obj\Debug\MasterMindGUI.csproj.CoreCompileInputs.cache
 D:\Programmation C#\MasterMindGUI\MasterMindGUI\obj\Debug\MasterMindGUI.exe
 D:\Programmation C#\MasterMindGUI\MasterMindGUI\obj\Debug\MasterMindGUI.pdb
+D:\Programmation C#\MasterMindGUI\MasterMindGUI\obj\Debug\MasterMindGUI.Rules.resources
+D:\Programmation C#\MasterMindGUI\MasterMindGUI\obj\Debug\MasterMindGUI.Menu.resources
