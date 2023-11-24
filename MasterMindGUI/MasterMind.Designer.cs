@@ -41,6 +41,7 @@
             this.btnGuess2 = new System.Windows.Forms.Button();
             this.btnGuess3 = new System.Windows.Forms.Button();
             this.btnGuess4 = new System.Windows.Forms.Button();
+            this.btnReturnMenu = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnRed
@@ -125,7 +126,7 @@
             // 
             // btnValidate
             // 
-            this.btnValidate.Location = new System.Drawing.Point(587, 361);
+            this.btnValidate.Location = new System.Drawing.Point(189, 361);
             this.btnValidate.Name = "btnValidate";
             this.btnValidate.Size = new System.Drawing.Size(106, 41);
             this.btnValidate.TabIndex = 17;
@@ -134,7 +135,7 @@
             // 
             // btnErase
             // 
-            this.btnErase.Location = new System.Drawing.Point(118, 361);
+            this.btnErase.Location = new System.Drawing.Point(541, 361);
             this.btnErase.Name = "btnErase";
             this.btnErase.Size = new System.Drawing.Size(106, 41);
             this.btnErase.TabIndex = 18;
@@ -186,11 +187,22 @@
             this.btnGuess4.TabIndex = 22;
             this.btnGuess4.UseVisualStyleBackColor = false;
             // 
+            // btnReturnMenu
+            // 
+            this.btnReturnMenu.Location = new System.Drawing.Point(737, 397);
+            this.btnReturnMenu.Name = "btnReturnMenu";
+            this.btnReturnMenu.Size = new System.Drawing.Size(106, 41);
+            this.btnReturnMenu.TabIndex = 23;
+            this.btnReturnMenu.Text = "Retour au menu";
+            this.btnReturnMenu.UseVisualStyleBackColor = true;
+            this.btnReturnMenu.Click += new System.EventHandler(this.btnReturnMenu_Click);
+            // 
             // MasterMind
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(855, 450);
+            this.Controls.Add(this.btnReturnMenu);
             this.Controls.Add(this.btnGuess4);
             this.Controls.Add(this.btnGuess3);
             this.Controls.Add(this.btnGuess2);
@@ -204,6 +216,8 @@
             this.Controls.Add(this.btnYellow);
             this.Controls.Add(this.btnGreen);
             this.Controls.Add(this.btnRed);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.MaximizeBox = false;
             this.Name = "MasterMind";
             this.Text = "MasterMind";
             this.ResumeLayout(false);
@@ -224,6 +238,7 @@
         private System.Windows.Forms.Button btnGuess2;
         private System.Windows.Forms.Button btnGuess3;
         private System.Windows.Forms.Button btnGuess4;
+        private System.Windows.Forms.Button btnReturnMenu;
     }
 }
 

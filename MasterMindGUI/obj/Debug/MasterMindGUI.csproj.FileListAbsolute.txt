@@ -4,10 +4,12 @@ D:\Programmation C#\MasterMindGUI\MasterMindGUI\bin\Debug\MasterMindGUI.pdb
 D:\Programmation C#\MasterMindGUI\MasterMindGUI\obj\Debug\MasterMindGUI.csproj.AssemblyReference.cache
 D:\Programmation C#\MasterMindGUI\MasterMindGUI\obj\Debug\MasterMindGUI.csproj.SuggestedBindingRedirects.cache
 D:\Programmation C#\MasterMindGUI\MasterMindGUI\obj\Debug\MasterMindGUI.MasterMind.resources
+D:\Programmation C#\MasterMindGUI\MasterMindGUI\obj\Debug\MasterMindGUI.Menu.resources
+D:\Programmation C#\MasterMindGUI\MasterMindGUI\obj\Debug\MasterMindGUI.Options.resources
 D:\Programmation C#\MasterMindGUI\MasterMindGUI\obj\Debug\MasterMindGUI.Properties.Resources.resources
+D:\Programmation C#\MasterMindGUI\MasterMindGUI\obj\Debug\MasterMindGUI.Rules.resources
 D:\Programmation C#\MasterMindGUI\MasterMindGUI\obj\Debug\MasterMindGUI.csproj.GenerateResource.cache
 D:\Programmation C#\MasterMindGUI\MasterMindGUI\obj\Debug\MasterMindGUI.csproj.CoreCompileInputs.cache
 D:\Programmation C#\MasterMindGUI\MasterMindGUI\obj\Debug\MasterMindGUI.exe
 D:\Programmation C#\MasterMindGUI\MasterMindGUI\obj\Debug\MasterMindGUI.pdb
-D:\Programmation C#\MasterMindGUI\MasterMindGUI\obj\Debug\MasterMindGUI.Rules.resources
-D:\Programmation C#\MasterMindGUI\MasterMindGUI\obj\Debug\MasterMindGUI.Menu.resources
+D:\Programmation C#\MasterMindGUI\MasterMindGUI\obj\Debug\MasterMindGUI.Results.resources

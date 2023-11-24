@@ -12,11 +12,20 @@ namespace MasterMindGUI
 {
     public partial class MasterMind : Form
     {
-        public MasterMind()
+        //pour ouvrir autres formulaires
+        Menu mainMenu;
+        Results ResultsForm;
+
+        public MasterMind(Menu menu)
         {
             InitializeComponent();
-        }
 
+            mainMenu = menu;
+        }
+        public MasterMind(Results results)
+        {
+            ResultsForm = results;
+        }
         /// <summary>
         /// Evénements pour entrer des couleurs
         /// </summary>
@@ -242,6 +251,20 @@ namespace MasterMindGUI
             btnGuess4.BackColor = Color.Gray;
             btnGuess4.ForeColor = Color.Gray;
             btnGuess4.Text = "";
+        }
+
+        /// <summary>
+        /// Quitter le jeu
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void btnReturnMenu_Click(object sender, EventArgs e)
+        {
+            //ouvrir le menu
+            mainMenu.Show();
+            //fermer le jeu
+            this.Hide();
+
         }
     }
 }

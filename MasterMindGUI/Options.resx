@@ -117,18 +117,4 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="lblRules.Text" xml:space="preserve">
-    <value>                                                                        Règles
-
-Dans ce jeu vous allez deviner la combinaison de couleurs qui a été créée 
-par le programme. Les nombres des bonnes et mauvaises positions 
-vont être affichés.
-
-Vous pouvez choisir le mode du jeu la difficulté (qui change le nombre d'essais, la longueur de la
-combinaison et le nombre de couleurs possibles) 
-dans les options.
-
-La différence entre les deux modes est l'affichage (nous voyons exectement quelles 
-couleurs sont justes avec le mode facile).</value>
-  </data>
 </root>

@@ -10,20 +10,14 @@ using System.Windows.Forms;
 
 namespace MasterMindGUI
 {
-    public partial class Rules : Form
+    public partial class Results : Form
     {
         Menu mainMenu;
-        public Rules(Menu menu)
+        MasterMind master;
+        public Results(Menu menu)
         {
             InitializeComponent();
-
             mainMenu = menu;
-        }
-
-        private void btnReturn_Click(object sender, EventArgs e)
-        {
-            this.Hide();
-            mainMenu.Show();
         }
     }
 }

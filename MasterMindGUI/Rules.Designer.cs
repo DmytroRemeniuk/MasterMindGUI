@@ -30,45 +30,70 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Rules));
             this.btnReturn = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblRules = new System.Windows.Forms.Label();
+            this.tableLayoutrules = new System.Windows.Forms.TableLayoutPanel();
+            this.tableLayoutrules.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnReturn
             // 
-            this.btnReturn.Location = new System.Drawing.Point(630, 387);
+            this.btnReturn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnReturn.Location = new System.Drawing.Point(658, 407);
             this.btnReturn.Name = "btnReturn";
-            this.btnReturn.Size = new System.Drawing.Size(141, 46);
+            this.btnReturn.Size = new System.Drawing.Size(141, 42);
             this.btnReturn.TabIndex = 0;
             this.btnReturn.Text = "Retour";
             this.btnReturn.UseVisualStyleBackColor = true;
+            this.btnReturn.Click += new System.EventHandler(this.btnReturn_Click);
             // 
-            // label1
+            // lblRules
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F);
-            this.label1.Location = new System.Drawing.Point(12, 27);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(778, 264);
-            this.label1.TabIndex = 1;
-            this.label1.Text = resources.GetString("label1.Text");
+            this.lblRules.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.lblRules.AutoSize = true;
+            this.lblRules.BackColor = System.Drawing.Color.White;
+            this.lblRules.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F);
+            this.lblRules.Location = new System.Drawing.Point(12, 93);
+            this.lblRules.Name = "lblRules";
+            this.lblRules.Size = new System.Drawing.Size(778, 264);
+            this.lblRules.TabIndex = 1;
+            this.lblRules.Text = resources.GetString("lblRules.Text");
+            // 
+            // tableLayoutrules
+            // 
+            this.tableLayoutrules.BackColor = System.Drawing.Color.Transparent;
+            this.tableLayoutrules.ColumnCount = 1;
+            this.tableLayoutrules.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 95.24406F));
+            this.tableLayoutrules.Controls.Add(this.btnReturn, 0, 2);
+            this.tableLayoutrules.Controls.Add(this.lblRules, 0, 1);
+            this.tableLayoutrules.Location = new System.Drawing.Point(-2, -2);
+            this.tableLayoutrules.Name = "tableLayoutrules";
+            this.tableLayoutrules.RowCount = 3;
+            this.tableLayoutrules.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 23.0198F));
+            this.tableLayoutrules.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 76.9802F));
+            this.tableLayoutrules.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 47F));
+            this.tableLayoutrules.Size = new System.Drawing.Size(802, 452);
+            this.tableLayoutrules.TabIndex = 2;
             // 
             // Rules
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImage = global::MasterMindGUI.Properties.Resources.maxresdefault;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.btnReturn);
+            this.Controls.Add(this.tableLayoutrules);
             this.Name = "Rules";
             this.Text = "MasterMind Règles";
+            this.tableLayoutrules.ResumeLayout(false);
+            this.tableLayoutrules.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
         private System.Windows.Forms.Button btnReturn;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblRules;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutrules;
     }
 }
