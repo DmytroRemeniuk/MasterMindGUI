@@ -16,7 +16,8 @@ namespace MasterMindGUI
         MasterMind MasterMindForm;
         Rules RulesForm;
         Options OptionsForm;
-        Results ResultsForm;
+        public int combLength;
+        public string colours;
 
         public Menu()
         {
@@ -25,7 +26,6 @@ namespace MasterMindGUI
             MasterMindForm = new MasterMind(this);
             OptionsForm = new Options(this);
             RulesForm = new Rules(this);
-            ResultsForm = new Results(this);
         }
 
         /// <summary>
@@ -72,11 +72,20 @@ namespace MasterMindGUI
         /// <param name="e"></param>
         private void btnPlay_Click(object sender, EventArgs e)
         {
+            //associer des variables
+            MasterMindForm.colours = colours;
+            MasterMindForm.combLength = combLength;
             //ouvrir les formulaires du jeu
             MasterMindForm.Show();
-            ResultsForm.Show();
             //fermer le menu
             this.Hide();
+        }
+
+        private void Menu_Load(object sender, EventArgs e)
+        {
+            //associer des variables
+            colours = OptionsForm.colours;
+            combLength = OptionsForm.combLength;
         }
     }
 }

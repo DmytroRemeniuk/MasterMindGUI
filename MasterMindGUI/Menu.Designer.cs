@@ -142,6 +142,7 @@
             this.Controls.Add(this.tableLayoutMenu);
             this.Name = "Menu";
             this.Text = "MaserMind Menu";
+            this.Load += new System.EventHandler(this.Menu_Load);
             this.tableLayoutMenu.ResumeLayout(false);
             this.tableLayoutMenu.PerformLayout();
             this.ResumeLayout(false);
