@@ -37,6 +37,7 @@
             this.NbColorsBox = new System.Windows.Forms.ComboBox();
             this.lblLength = new System.Windows.Forms.Label();
             this.lblNbColors = new System.Windows.Forms.Label();
+            this.checkBox1 = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // btnReturn
@@ -146,11 +147,24 @@
             this.lblNbColors.TabIndex = 8;
             this.lblNbColors.Text = "Nombre de couleurs";
             // 
+            // checkBox1
+            // 
+            this.checkBox1.AutoSize = true;
+            this.checkBox1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.checkBox1.Location = new System.Drawing.Point(58, 163);
+            this.checkBox1.Name = "checkBox1";
+            this.checkBox1.Size = new System.Drawing.Size(110, 17);
+            this.checkBox1.TabIndex = 9;
+            this.checkBox1.Text = "Afficher des lettres";
+            this.checkBox1.UseVisualStyleBackColor = true;
+            this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            // 
             // Options
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(491, 450);
+            this.Controls.Add(this.checkBox1);
             this.Controls.Add(this.lblNbColors);
             this.Controls.Add(this.lblLength);
             this.Controls.Add(this.NbColorsBox);
@@ -178,5 +192,6 @@
         private System.Windows.Forms.ComboBox NbColorsBox;
         private System.Windows.Forms.Label lblLength;
         private System.Windows.Forms.Label lblNbColors;
+        private System.Windows.Forms.CheckBox checkBox1;
     }
 }

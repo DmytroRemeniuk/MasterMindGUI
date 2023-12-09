@@ -18,6 +18,7 @@ namespace MasterMindGUI
         Options OptionsForm;
         public int combLength;
         public string colours;
+        public bool showLetters;
 
         public Menu()
         {
@@ -75,6 +76,7 @@ namespace MasterMindGUI
             //associer des variables
             MasterMindForm.colours = colours;
             MasterMindForm.combLength = combLength;
+            MasterMindForm.showLetters = showLetters;
             //ouvrir les formulaires du jeu
             MasterMindForm.Show();
             //fermer le menu
@@ -86,6 +88,7 @@ namespace MasterMindGUI
             //associer des variables
             colours = OptionsForm.colours;
             combLength = OptionsForm.combLength;
+            showLetters = OptionsForm.showLetters;
         }
     }
 }

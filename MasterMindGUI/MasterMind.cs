@@ -33,6 +33,8 @@ namespace MasterMindGUI
         int correctPositions = 0;
         List<string> noRep = new List<string>();
         List<char> usedColours;
+
+        public bool showLetters;
         #endregion
 
         //pour ouvrir autres formulaires
@@ -45,8 +47,9 @@ namespace MasterMindGUI
             mainMenu = menu;
         }
 
+        #region Colours
         /// <summary>
-        /// Evénement pour entrer des couleurs
+        /// Méthode pour entrer des couleurs
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -72,7 +75,7 @@ namespace MasterMindGUI
         }
 
         /// <summary>
-        /// Un événement pour effacer les couleurs entrées
+        /// Méthode pour effacer les couleurs entrées
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -108,8 +111,7 @@ namespace MasterMindGUI
                 MessageBox.Show("Le tableau est déjà vide");
             }
         }
-
-        
+        #endregion
 
         /// <summary>
         /// le jeu-même
@@ -118,6 +120,26 @@ namespace MasterMindGUI
         /// <param name="e"></param>
         private void MasterMind_VisibleChanged(object sender, EventArgs e)
         {
+            if(showLetters == true)
+            {
+                btnRed.ForeColor = Color.Black;
+                btnGreen.ForeColor = Color.Black;
+                btnBlue.ForeColor = Color.Black;
+                btnYellow.ForeColor = Color.Black;
+                btnOrange.ForeColor = Color.Black;
+                btnCyan.ForeColor = Color.Black;
+                btnMagenta.ForeColor = Color.Black;
+            }
+            else
+            {
+                btnRed.ForeColor = Color.Red;
+                btnGreen.ForeColor = Color.Green;
+                btnBlue.ForeColor = Color.Blue;
+                btnYellow.ForeColor = Color.Yellow;
+                btnOrange.ForeColor = Color.Orange;
+                btnCyan.ForeColor = Color.Cyan;
+                btnMagenta.ForeColor = Color.Magenta;
+            }
             //tableau de boutons
             resultTable = new Button[MAX_TRIES, combLength];
             //remplir le tableau avec des boutons
@@ -177,11 +199,7 @@ namespace MasterMindGUI
             //tableau pour stocker la combinaison
             stringColours = new char[combLength];
 
-            //boucle qui se répète pour que la variable "stringColours" prenne des valeurs de "colours"
-            for (int i = 0; i < stringColours.Length; i++)
-            {
-                stringColours[i] = colours[random.Next(colours.Length)];
-            }
+            CombCreate();
         }
 
         /// <summary>
@@ -287,6 +305,7 @@ namespace MasterMindGUI
             }
         }
 
+        #region Fonction++
         /// <summary>
         /// fonction++ 1
         /// </summary>
@@ -336,6 +355,7 @@ namespace MasterMindGUI
         {
             MessageBox.Show("4:  ·-");
         }
+        #endregion
 
         #region Reset et Retour
         /// <summary>
@@ -391,12 +411,75 @@ namespace MasterMindGUI
             currentLine = 0;
 
             //récréer la combinaison
+            CombCreate();
+            cheatBox.Checked = false;
+
+            HideButtons();
+        }
+        #endregion
+
+        /// <summary>
+        /// créer la combinaison
+        /// </summary>
+        void CombCreate()
+        {
+            //boucle qui se répète pour que la variable "stringColours" prenne des valeurs de "colours"
             for (int i = 0; i < stringColours.Length; i++)
             {
                 stringColours[i] = colours[random.Next(colours.Length)];
             }
-            cheatBox.Checked = false;
         }
-        #endregion
+
+        /// <summary>
+        /// pour afficher la bonne quantité des boutons des couleurs
+        /// </summary>
+        void HideButtons()
+        {
+            switch(colours)
+            {
+                case "RG":
+                    btnBlue.Hide();
+                    btnCyan.Hide();
+                    btnMagenta.Hide();
+                    btnOrange.Hide();
+                    btnYellow.Hide();
+                    break;
+                case "RGB":
+                    btnBlue.Show();
+                    btnCyan.Hide();
+                    btnMagenta.Hide();
+                    btnOrange.Hide();
+                    btnYellow.Hide();
+                    break;
+                case "RGBY":
+                    btnBlue.Show();
+                    btnYellow.Show();
+                    btnCyan.Hide();
+                    btnMagenta.Hide();
+                    btnOrange.Hide();
+                    break;
+                case "RGBYO":
+                    btnBlue.Show();
+                    btnYellow.Show();
+                    btnOrange.Show();
+                    btnCyan.Hide();
+                    btnMagenta.Hide();
+                    break;
+                case "RGBYOC":
+                    btnBlue.Show();
+                    btnYellow.Show();
+                    btnOrange.Show();
+                    btnCyan.Show();
+                    btnMagenta.Hide();
+                    break;
+                case "RGBYOCM":
+                    btnBlue.Show();
+                    btnYellow.Show();
+                    btnOrange.Show();
+                    btnCyan.Show();
+                    btnMagenta.Show();
+                    break;
+            }    
+        }
     }
 }

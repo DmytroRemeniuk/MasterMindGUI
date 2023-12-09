@@ -15,6 +15,7 @@ namespace MasterMindGUI
         public int combLength = 4;
         int coloursNb;
         public string colours = "RGBYOCM";
+        public bool showLetters = false;
 
         Menu mainMenu;
         public Options(Menu menu)
@@ -58,6 +59,7 @@ namespace MasterMindGUI
                 //associer des variables
                 mainMenu.colours = colours;
                 mainMenu.combLength = combLength;
+                mainMenu.showLetters = showLetters;
 
                 //retourner au menu
                 this.Hide();
@@ -79,6 +81,18 @@ namespace MasterMindGUI
             RadioButton radio = (RadioButton)sender;
 
             combLength = Convert.ToInt32(radio.Text);
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            if(checkBox1.Checked)
+            {
+                showLetters = true;
+            }
+            else
+            {
+                showLetters = false;
+            }
         }
     }
 }

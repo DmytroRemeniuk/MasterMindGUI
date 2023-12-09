@@ -49,7 +49,7 @@
             // 
             this.btnRed.BackColor = System.Drawing.Color.Red;
             this.btnRed.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnRed.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btnRed.ForeColor = System.Drawing.Color.Red;
             this.btnRed.Location = new System.Drawing.Point(627, 30);
             this.btnRed.Margin = new System.Windows.Forms.Padding(0);
             this.btnRed.Name = "btnRed";
@@ -63,7 +63,7 @@
             // 
             this.btnGreen.BackColor = System.Drawing.Color.Green;
             this.btnGreen.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnGreen.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btnGreen.ForeColor = System.Drawing.Color.Green;
             this.btnGreen.Location = new System.Drawing.Point(627, 90);
             this.btnGreen.Name = "btnGreen";
             this.btnGreen.Size = new System.Drawing.Size(38, 38);
@@ -76,7 +76,7 @@
             // 
             this.btnYellow.BackColor = System.Drawing.Color.Yellow;
             this.btnYellow.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnYellow.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btnYellow.ForeColor = System.Drawing.Color.Yellow;
             this.btnYellow.Location = new System.Drawing.Point(627, 210);
             this.btnYellow.Name = "btnYellow";
             this.btnYellow.Size = new System.Drawing.Size(38, 38);
@@ -89,7 +89,7 @@
             // 
             this.btnBlue.BackColor = System.Drawing.Color.Blue;
             this.btnBlue.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnBlue.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btnBlue.ForeColor = System.Drawing.Color.Blue;
             this.btnBlue.Location = new System.Drawing.Point(627, 150);
             this.btnBlue.Name = "btnBlue";
             this.btnBlue.Size = new System.Drawing.Size(38, 38);
@@ -102,7 +102,7 @@
             // 
             this.btnOrange.BackColor = System.Drawing.Color.Orange;
             this.btnOrange.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnOrange.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btnOrange.ForeColor = System.Drawing.Color.Orange;
             this.btnOrange.Location = new System.Drawing.Point(627, 270);
             this.btnOrange.Name = "btnOrange";
             this.btnOrange.Size = new System.Drawing.Size(38, 38);
@@ -116,7 +116,7 @@
             this.btnMagenta.BackColor = System.Drawing.Color.Magenta;
             this.btnMagenta.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnMagenta.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F);
-            this.btnMagenta.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btnMagenta.ForeColor = System.Drawing.Color.Magenta;
             this.btnMagenta.Location = new System.Drawing.Point(627, 390);
             this.btnMagenta.Name = "btnMagenta";
             this.btnMagenta.Size = new System.Drawing.Size(38, 38);
@@ -129,7 +129,7 @@
             // 
             this.btnCyan.BackColor = System.Drawing.Color.Cyan;
             this.btnCyan.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnCyan.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.btnCyan.ForeColor = System.Drawing.Color.Cyan;
             this.btnCyan.Location = new System.Drawing.Point(627, 330);
             this.btnCyan.Name = "btnCyan";
             this.btnCyan.Size = new System.Drawing.Size(38, 38);
