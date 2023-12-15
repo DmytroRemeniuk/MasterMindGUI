@@ -15,10 +15,11 @@ namespace MasterMindGUI
         #region Variables et constantes
         //pour faire le tableau des boutons de resultat
         const int MAX_TRIES = 10;
-        int cmptr = 0;
         Button[,] resultTable;
+        Button[,] resultPositionsTable;
         //des attributs des boutons de resultat
         const int BUTTON_SIZE = 25;
+        const int POSITION_BUTTON_SIZE = 16;
         //pour parcourir le tableau des boutons
         int currentLine = 0;
         int currentColumn = 0;
@@ -31,10 +32,14 @@ namespace MasterMindGUI
         string guess = "";
         int correctColours = 0;
         int correctPositions = 0;
-        List<string> noRep = new List<string>();
+        string[] noRep;
         List<char> usedColours;
-
+        int cmptr;//pour remplir le tableau des positions
+        int noRepCmptr;
+        //cosmetique
+        public bool showNumbers;
         public bool showLetters;
+        public int languageChoice;
         #endregion
 
         //pour ouvrir autres formulaires
@@ -57,7 +62,18 @@ namespace MasterMindGUI
         {
             if(currentColumn == combLength)
             {
-                MessageBox.Show("Vous avez entrez maximum des couleur");
+                if(languageChoice == 0)
+                {
+                    MessageBox.Show("Vous avez entrez maximum de couleurs");
+                }
+                if(languageChoice == 1)
+                {
+                    MessageBox.Show("You have entered maximum of colors");
+                }
+                if(languageChoice == 2)
+                {
+                    MessageBox.Show("Ви ввели максимум кольорів");
+                }
             }
             else
             {  
@@ -81,16 +97,31 @@ namespace MasterMindGUI
         /// <param name="e"></param>
         private void btnErase_Click(object sender, EventArgs e)
         {
-            resultTable[currentLine, 0].BackColor = Color.Gray;
-            resultTable[currentLine, 1].BackColor = Color.Gray;
-            resultTable[currentLine, 2].BackColor = Color.Gray;
-            resultTable[currentLine, 3].BackColor = Color.Gray;
-            resultTable[currentLine, 0].Text = "";
-            resultTable[currentLine, 1].Text = "";
-            resultTable[currentLine, 2].Text = "";
-            resultTable[currentLine, 3].Text = "";
+            if(currentColumn != 0)
+            {
+                for (int j = combLength-1; j >= 0; j--)
+                {
+                    resultTable[currentLine, j].BackColor = Color.Gray;
+                    resultTable[currentLine, j].Text = "";
+                }
 
-            currentColumn = 0;
+                currentColumn = 0;
+            }
+            else
+            {
+                if(languageChoice == 0)
+                {
+                    MessageBox.Show("Le tableau est déjà vide");
+                }
+                if(languageChoice == 1)
+                {
+                    MessageBox.Show("The table is already empty");
+                }
+                if(languageChoice == 2)
+                {
+                    MessageBox.Show("Таблиця вже пуста");
+                }
+            }
         }
 
         /// <summary>
@@ -108,7 +139,18 @@ namespace MasterMindGUI
             }
             else
             {
-                MessageBox.Show("Le tableau est déjà vide");
+                if (languageChoice == 0)
+                {
+                    MessageBox.Show("Le tableau est déjà vide");
+                }
+                if (languageChoice == 1)
+                {
+                    MessageBox.Show("The table is already empty");
+                }
+                if (languageChoice == 2)
+                {
+                    MessageBox.Show("Таблиця вже пуста");
+                }
             }
         }
         #endregion
@@ -118,9 +160,87 @@ namespace MasterMindGUI
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void MasterMind_VisibleChanged(object sender, EventArgs e)
+        private void MasterMind_Load(object sender, EventArgs e)
         {
-            if(showLetters == true)
+            #region Size&Location
+            //changer la taille et position d'éléments
+            this.Size = new Size(this.Width + (combLength - 2) * BUTTON_SIZE + 13 * (combLength - 2), this.Height);
+            pnlResults.Size = new Size(pnlResults.Width + (combLength - 2) * BUTTON_SIZE + 13 * (combLength - 2), pnlResults.Height);
+            pnlPositionsResults.Location = new Point(pnlPositionsResults.Location.X + (combLength - 2) * BUTTON_SIZE + 18 * (combLength - 2), pnlPositionsResults.Location.Y);
+            btnValidate.Location = new Point(btnValidate.Location.X + (combLength - 2) * BUTTON_SIZE + 13 * (combLength - 2), btnValidate.Location.Y);
+            btnErase.Location = new Point(btnErase.Location.X + (combLength - 2) * BUTTON_SIZE + 13 * (combLength - 2), btnErase.Location.Y);
+            btnEraseOne.Location = new Point(btnEraseOne.Location.X + (combLength - 2) * BUTTON_SIZE + 13 * (combLength - 2), btnEraseOne.Location.Y);
+            btnRed.Location = new Point(btnRed.Location.X + (combLength - 2) * BUTTON_SIZE + 13 * (combLength - 2), btnRed.Location.Y);
+            btnGreen.Location = new Point(btnGreen.Location.X + (combLength - 2) * BUTTON_SIZE + 13 * (combLength - 2), btnGreen.Location.Y);
+            btnBlue.Location = new Point(btnBlue.Location.X + (combLength - 2) * BUTTON_SIZE + 13 * (combLength - 2), btnBlue.Location.Y);
+            btnYellow.Location = new Point(btnYellow.Location.X + (combLength - 2) * BUTTON_SIZE + 13 * (combLength - 2), btnYellow.Location.Y);
+            btnOrange.Location = new Point(btnOrange.Location.X + (combLength - 2) * BUTTON_SIZE + 13 * (combLength - 2), btnOrange.Location.Y);
+            btnCyan.Location = new Point(btnCyan.Location.X + (combLength - 2) * BUTTON_SIZE + 13 * (combLength - 2), btnCyan.Location.Y);
+            btnMagenta.Location = new Point(btnMagenta.Location.X + (combLength - 2) * BUTTON_SIZE + 13 * (combLength - 2), btnMagenta.Location.Y);
+            #endregion
+
+            //langue
+            if(languageChoice == 0)
+            {
+                lblExemple1.Text = "- bonne position"; 
+                lblExemple2.Text = "- mauvaise position"; 
+                lblExemple3.Text = "- rien";
+                btnReset.Text = "Reset";
+                btnReturnMenu.Text = "Retour au menu";
+                btnValidate.Text = "Valider";
+                btnErase.Text = "Effacer tout";
+                btnEraseOne.Text = "Effacer";
+                cheatBox.Text = "Tricher";
+                btnRed.Text = "R";
+                btnGreen.Text = "V";
+                btnBlue.Text = "B";
+                btnYellow.Text = "J";
+                btnOrange.Text = "O";
+                btnCyan.Text = "C";
+                btnMagenta.Text = "M";
+            }
+            if(languageChoice == 1)
+            {
+                lblExemple1.Text = "- good position";
+                lblExemple2.Text = "- bad position";
+                lblExemple3.Text = "- nothing";
+                btnReset.Text = "Reset";
+                btnReturnMenu.Text = "Return to menu";
+                btnValidate.Text = "Validate";
+                btnErase.Text = "Erase all";
+                btnEraseOne.Text = "Erase";
+                cheatBox.Text = "Cheat";
+                btnRed.Text = "R";
+                btnGreen.Text = "G";
+                btnBlue.Text = "B";
+                btnYellow.Text = "Y";
+                btnOrange.Text = "O";
+                btnCyan.Text = "C";
+                btnMagenta.Text = "M";
+            }
+            if(languageChoice == 2)
+            {
+                lblExemple1.Text = "- правильно";
+                lblExemple2.Text = "- не та позиція";
+                lblExemple3.Text = "- нічого";
+                btnReset.Text = "Reset";
+                btnReturnMenu.Text = "Назад до меню";
+                btnValidate.Text = "Підтвердити";
+                btnErase.Text = "Стерти все";
+                btnEraseOne.Text = "Стерти";
+                cheatBox.Text = "Змухлювати";
+                cheatBox.Font = new Font("Microsoft Sans Serif", 7, FontStyle.Regular);
+                btnRed.Text = "Ч";
+                btnGreen.Text = "З";
+                btnBlue.Text = "С";
+                btnYellow.Text = "Ж";
+                btnOrange.Text = "П";
+                btnCyan.Text = "Г";
+                btnMagenta.Text = "Р";
+            }
+
+            //montrer/cacher les lettres des couleurs
+            if (showLetters == true)
             {
                 btnRed.ForeColor = Color.Black;
                 btnGreen.ForeColor = Color.Black;
@@ -140,49 +260,76 @@ namespace MasterMindGUI
                 btnCyan.ForeColor = Color.Cyan;
                 btnMagenta.ForeColor = Color.Magenta;
             }
-            //tableau de boutons
+            //cacher les indices
+            if(showNumbers == true)
+            {
+                btnExemple1.Hide();
+                btnExemple2.Hide();
+                btnExemple3.Hide();
+                lblExemple1.Hide();
+                lblExemple2.Hide();
+                lblExemple3.Hide();
+            }
+
+            //tableaux de boutons
             resultTable = new Button[MAX_TRIES, combLength];
+            resultPositionsTable = new Button[MAX_TRIES, combLength];
+            noRep = new string[MAX_TRIES];
+            noRepCmptr = 0;
+            for(int i = 0; i < MAX_TRIES; i++)
+            {
+                noRep[i] = "-";
+            }
             //remplir le tableau avec des boutons
             for (int i = 0; i < MAX_TRIES; i++)
             {
                 for (int j = 0; j < combLength; j++)
                 {
-                    cmptr++;
-
+                    //fonction++
                     r = random.Next(5);
 
+                    //créer un nouveau bouton
                     Button button = new Button();
                     button.Text = "";
                     button.Size = new Size(BUTTON_SIZE, BUTTON_SIZE);
-                    button.Location = new Point(j * BUTTON_SIZE * 2, i * BUTTON_SIZE * 2);
-                    button.Name = "btnGuess" + cmptr;
+                    button.Location = new Point(j * BUTTON_SIZE * 7 / 4, i * BUTTON_SIZE * 7 / 4);
                     button.FlatStyle = FlatStyle.Flat;
                     button.ForeColor = Color.Gray;
                     button.BackColor = Color.Gray;
-
                     //fonction++
-                    if (r == 0)
+                    switch (r)
                     {
-                        button.Click += Boo;
-                    }
-                    else if (r == 1)
-                    {
-                        button.Click += LettreD;
-                    }
-                    else if (r == 2)
-                    {
-                        button.Click += LettreI;
-                    }
-                    else if (r == 3)
-                    {
-                        button.Click += LettreM;
-                    }
-                    else
-                    {
-                        button.Click += LettreA;
-                    }
-
+                        case 0:
+                            button.Click += Boo;
+                            break;
+                        case 1:
+                            button.Click += LettreD;
+                            break;
+                        case 2:
+                            button.Click += LettreI;
+                            break;
+                        case 3:
+                            button.Click += LettreM;
+                            break;
+                        case 4:
+                            button.Click += LettreA;
+                            break;
+                    }    
+                    //ajouter dans le tableau des boutons
                     resultTable[i, j] = button;
+
+                    //pour les boutons des positions
+                    if(showNumbers == false)
+                    {
+                        Button button1 = new Button();
+                        button1.Text = "";
+                        button1.Size = new Size (POSITION_BUTTON_SIZE, POSITION_BUTTON_SIZE);
+                        button1.Location = new Point(j * POSITION_BUTTON_SIZE * 7 / 4 + 10, i * BUTTON_SIZE * 7 / 4 + 4);
+                        button1.FlatStyle = FlatStyle.Flat; 
+                        button1.BackColor = Color.Gray;
+                        button1.Enabled = false;
+                        resultPositionsTable[i, j] = button1;
+                    }
                 }
             }
 
@@ -192,14 +339,16 @@ namespace MasterMindGUI
                 for (int j = 0; j < combLength; j++)
                 {
                     pnlResults.Controls.Add(resultTable[i, j]);
+                    pnlPositionsResults.Controls.Add(resultPositionsTable[i, j]);
                 }
-            }
+            }           
 
             //création d'un code à deviner
             //tableau pour stocker la combinaison
             stringColours = new char[combLength];
 
             CombCreate();
+            HideButtons();
         }
 
         /// <summary>
@@ -223,10 +372,30 @@ namespace MasterMindGUI
                 guess += resultTable[currentLine, i].Text;
             }
 
+            Double();
+
+            //pour ne pas répéter les même combinaisons
+            if(!noRep.Contains(guess))
+            {
+                noRep[noRepCmptr] = guess;
+                noRepCmptr++;
+            }
+
             //affichage d'erreur
             if (resultTable[currentLine, combLength-1].BackColor == Color.Gray)
             {
-                MessageBox.Show("Veuillez entrer " + combLength + " couleurs");
+                if(languageChoice == 0)
+                {
+                    MessageBox.Show("Veuillez entrer " + combLength + " couleurs");
+                }
+                if(languageChoice == 1)
+                {
+                    MessageBox.Show("Enter " + combLength + " colors");
+                }
+                if(languageChoice == 2)
+                {
+                    MessageBox.Show("Введіть " + combLength + " кольорів");
+                }
             }
             //vérifier 
             else
@@ -251,33 +420,121 @@ namespace MasterMindGUI
                     }
                 }
 
-                for(int i = 0; i < 2; i++)
+                if(showNumbers == true)
                 {
-                    if(i == 0)
+                    //labels pour afficher le resultat
+                    //bonnes positionnes
+                    Label labelGoodPositions = new Label();
+                    if(languageChoice == 0)
                     {
-                        Label label = new Label();
-                        label.Text = "Bonnes positions: " + correctPositions.ToString();
-                        label.Location = new Point(currentColumn * BUTTON_SIZE * 2, currentLine * BUTTON_SIZE * 2);
-                        pnlResults.Controls.Add(label);
+                        labelGoodPositions.Text = "Bonnes: " + correctPositions.ToString();
                     }
-                    else
+                    if(languageChoice == 1)
                     {
-                        Label label = new Label();
-                        label.Text = "Mauvaises: " + correctColours.ToString();
-                        label.Location = new Point(currentColumn * BUTTON_SIZE * 2 + 120, currentLine * BUTTON_SIZE * 2);
-                        pnlResults.Controls.Add(label);
+                        labelGoodPositions.Text = "Good: " + correctPositions.ToString();
+                    }
+                    if(languageChoice == 2)
+                    {
+                        labelGoodPositions.Text = "OK: " + correctPositions.ToString();
+                    }
+                    labelGoodPositions.Location = new Point(0, currentLine * BUTTON_SIZE * 7 / 4 + 6);
+                    labelGoodPositions.Font = new Font("Microsoft Sans Serif", 9, FontStyle.Bold);
+                    labelGoodPositions.ForeColor = Color.White;
+                    labelGoodPositions.Size = new Size(80, 25);
+                    //mauvaises positionnes
+                    Label labelBadPositions = new Label();
+                    if (languageChoice == 0)
+                    {
+                        labelBadPositions.Text = "Mauvaises: " + correctColours.ToString();
+                    }
+                    if (languageChoice == 1)
+                    {
+                        labelBadPositions.Text = "Bad: " + correctColours.ToString();
+                    }
+                    if (languageChoice == 2)
+                    {
+                        labelBadPositions.Text = "Не там: " + correctColours.ToString();
+                    }
+                    labelBadPositions.Location = new Point(85, currentLine * BUTTON_SIZE * 7 / 4 + 6);
+                    labelBadPositions.Font = new Font("Microsoft Sans Serif", 9, FontStyle.Bold);
+                    labelBadPositions.ForeColor = Color.White;
+                    //ajouter les labels au panel
+                    pnlPositionsResults.Controls.Add(labelGoodPositions);
+                    pnlPositionsResults.Controls.Add(labelBadPositions);
+                }
+                else
+                {
+                    if(correctPositions != 0)
+                    {
+                        for (int i = 0; i < correctPositions; i++)
+                        {
+                            resultPositionsTable[currentLine, i].BackColor = Color.White;
+                        }
+                    }
+                    if(correctColours != 0)
+                    {
+                        cmptr = correctPositions;
+                        for(int i = 0; i < correctColours; i++)
+                        {
+                            resultPositionsTable[currentLine, cmptr].BackColor = Color.Black;
+                            cmptr++;
+                        }
+                    }
+                    for(int i = 0; i < combLength; i++)
+                    {
+                        if (resultPositionsTable[currentLine, i].BackColor == Color.Gray)
+                        {
+                            resultPositionsTable[currentLine, i].BackColor = Color.Brown;
+                        }
                     }
                 }
-                
-                //parcourir le tableau
+
+                //parcourir le tableau des boutons
                 currentColumn = 0;
                 currentLine++;
 
                 //afficher le message si l'utilisateur a gagner
                 if(correctPositions == combLength)
                 {
-                    MessageBox.Show("Vous avez gagnez!\n" +
+                    if(languageChoice == 0)
+                    {
+                        MessageBox.Show("Vous avez gagnez!\n" +
                         "Appuyez sur \"Reset\" pour recommencer");
+                    }
+                    if (languageChoice == 1)
+                    {
+                        MessageBox.Show("You win!\n" +
+                        "Click on \"Reset\" to replay");
+                    }
+                    if (languageChoice == 2)
+                    {
+                        MessageBox.Show("Ви виграли!\n" +
+                        "Натисніть на \"Reset\", щоб почати спочатку");
+                    }
+                    btnErase.Enabled = false;
+                    btnEraseOne.Enabled = false;
+                    btnValidate.Enabled = false;
+                    currentLine--;
+                }
+
+                //afficher le message si l'utilisateur a perdu
+                if(currentLine == MAX_TRIES)
+                {
+                    if (languageChoice == 0)
+                    {
+                        MessageBox.Show("Vous avez perdu!\n" +
+                        "Appuyez sur \"Reset\" pour recommencer");
+                    }
+                    if (languageChoice == 1)
+                    {
+                        MessageBox.Show("You lose!\n" +
+                        "Click on \"Reset\" to replay");
+                    }
+                    if (languageChoice == 2)
+                    {
+                        MessageBox.Show("Ви програли!\n" +
+                        "Натисніть на \"Reset\", щоб почати спочатку");
+                    }
                     btnErase.Enabled = false;
                     btnEraseOne.Enabled = false;
                     btnValidate.Enabled = false;
@@ -291,18 +548,8 @@ namespace MasterMindGUI
         /// <param name="sender"></param>
         /// <param name="e"></param>
         private void cheatBox_CheckedChanged(object sender, EventArgs e)
-        {  
-            if(cheatBox.Checked == true)
-            {
-                for (int i = 0; i < combLength; i++)
-                {
-                    lblAnswer.Text += stringColours[i].ToString();
-                }
-            }
-            else
-            {
-                lblAnswer.Text = "";
-            }
+        {
+            Cheats();
         }
 
         #region Fonction++
@@ -374,11 +621,10 @@ namespace MasterMindGUI
         /// <param name="e"></param>
         private void btnReturnMenu_Click(object sender, EventArgs e)
         {
-            Reset();
             //ouvrir le menu
             mainMenu.Show();
             //fermer le jeu
-            this.Hide();
+            this.Close();
         }
 
         /// <summary>
@@ -394,6 +640,10 @@ namespace MasterMindGUI
                     resultTable[i, j].Text = "";
                     resultTable[i, j].BackColor = Color.Gray;
                     resultTable[i, j].ForeColor = Color.Gray;
+                    if(!showNumbers)
+                    {
+                        resultPositionsTable[i, j].BackColor = Color.Gray;
+                    }   
                 }
             }
 
@@ -403,8 +653,10 @@ namespace MasterMindGUI
             btnEraseOne.Enabled = true;
 
             //faire disparaitre des labels
-            foreach (var lbl in pnlResults.Controls.OfType<Label>())//l'idée - https://stackoverflow.com/questions/31233558/c-sharp-hide-all-labels-controls
+            foreach (var lbl in pnlPositionsResults.Controls.OfType<Label>())//l'idée - https://stackoverflow.com/questions/31233558/c-sharp-hide-all-labels-controls
+            {
                 lbl.Hide();
+            }   
 
             //pour commencer avec le premier bouton
             currentColumn = 0;
@@ -412,9 +664,15 @@ namespace MasterMindGUI
 
             //récréer la combinaison
             CombCreate();
-            cheatBox.Checked = false;
-
-            HideButtons();
+            //changer le texte de "Tricher"
+            lblAnswer.Text = "";
+            Cheats();
+            //effacer le tableau noRep
+            for(int i = 0; i < MAX_TRIES; i++)
+            {
+                noRep[i] = "-";
+            }
+            noRepCmptr = 0;
         }
         #endregion
 
@@ -437,42 +695,54 @@ namespace MasterMindGUI
         {
             switch(colours)
             {
+                case "ЧЗ":
                 case "RG":
+                case "RV":
                     btnBlue.Hide();
                     btnCyan.Hide();
                     btnMagenta.Hide();
                     btnOrange.Hide();
                     btnYellow.Hide();
                     break;
+                case "ЧЗС":
                 case "RGB":
+                case "RVB":
                     btnBlue.Show();
                     btnCyan.Hide();
                     btnMagenta.Hide();
                     btnOrange.Hide();
                     btnYellow.Hide();
                     break;
+                case "ЧЗСЖ":
                 case "RGBY":
+                case "RVBJ":
                     btnBlue.Show();
                     btnYellow.Show();
                     btnCyan.Hide();
                     btnMagenta.Hide();
                     btnOrange.Hide();
                     break;
+                case "ЧЗСЖП":
                 case "RGBYO":
+                case "RVBJO":
                     btnBlue.Show();
                     btnYellow.Show();
                     btnOrange.Show();
                     btnCyan.Hide();
                     btnMagenta.Hide();
                     break;
+                case "ЧЗСЖПГ":
                 case "RGBYOC":
+                case "RVBJOC":
                     btnBlue.Show();
                     btnYellow.Show();
                     btnOrange.Show();
                     btnCyan.Show();
                     btnMagenta.Hide();
                     break;
+                case "ЧЗСЖПГР":
                 case "RGBYOCM":
+                case "RVBJOCM":
                     btnBlue.Show();
                     btnYellow.Show();
                     btnOrange.Show();
@@ -480,6 +750,53 @@ namespace MasterMindGUI
                     btnMagenta.Show();
                     break;
             }    
+        }
+
+        /// <summary>
+        /// pour changer le texte de "Tricher"
+        /// </summary>
+        void Cheats()
+        {
+            if (cheatBox.Checked == true)
+            {
+                for (int i = 0; i < combLength; i++)
+                {
+                    lblAnswer.Text += stringColours[i].ToString();
+                }
+            }
+            else
+            {
+                lblAnswer.Text = "";
+            }
+        }
+
+        /// <summary>
+        /// éviter des doublons
+        /// </summary>
+        void Double()
+        {
+            if (noRep.Contains(guess))
+            {
+                if(languageChoice == 0)
+                {
+                    MessageBox.Show("Vous avez déja utilisé cette combinaison, réessayez");
+                }
+                if(languageChoice == 1)
+                {
+                    MessageBox.Show("You have already tried this combination, retry");
+                }
+                if(languageChoice == 2)
+                {
+                    MessageBox.Show("Ви вже вводили цю послідовність, спробуйте іншу");
+                }
+                for(int j = combLength-1; j >= 0; j--)
+                {
+                    resultTable[currentLine, j].BackColor = Color.Gray;
+                    resultTable[currentLine, j].ForeColor = Color.Gray;
+                    resultTable[currentLine, j].Text = "";
+                }
+                currentColumn = 0;
+            }
         }
     }
 }

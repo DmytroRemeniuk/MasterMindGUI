@@ -37,10 +37,10 @@
             // 
             // btnReturn
             // 
-            this.btnReturn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnReturn.Location = new System.Drawing.Point(658, 407);
+            this.btnReturn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnReturn.Location = new System.Drawing.Point(3, 408);
             this.btnReturn.Name = "btnReturn";
-            this.btnReturn.Size = new System.Drawing.Size(141, 42);
+            this.btnReturn.Size = new System.Drawing.Size(141, 41);
             this.btnReturn.TabIndex = 0;
             this.btnReturn.Text = "Retour";
             this.btnReturn.UseVisualStyleBackColor = true;
@@ -48,15 +48,17 @@
             // 
             // lblRules
             // 
-            this.lblRules.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.lblRules.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.lblRules.AutoSize = true;
-            this.lblRules.BackColor = System.Drawing.Color.White;
-            this.lblRules.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F);
-            this.lblRules.Location = new System.Drawing.Point(12, 93);
+            this.lblRules.BackColor = System.Drawing.Color.Transparent;
+            this.lblRules.Font = new System.Drawing.Font("Microsoft Sans Serif", 16F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblRules.ForeColor = System.Drawing.Color.White;
+            this.lblRules.Location = new System.Drawing.Point(3, 103);
             this.lblRules.Name = "lblRules";
-            this.lblRules.Size = new System.Drawing.Size(778, 264);
+            this.lblRules.Size = new System.Drawing.Size(795, 208);
             this.lblRules.TabIndex = 1;
             this.lblRules.Text = resources.GetString("lblRules.Text");
+            this.lblRules.VisibleChanged += new System.EventHandler(this.Rules_VisibleChanged);
             // 
             // tableLayoutrules
             // 
@@ -68,8 +70,8 @@
             this.tableLayoutrules.Location = new System.Drawing.Point(-2, -2);
             this.tableLayoutrules.Name = "tableLayoutrules";
             this.tableLayoutrules.RowCount = 3;
-            this.tableLayoutrules.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 23.0198F));
-            this.tableLayoutrules.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 76.9802F));
+            this.tableLayoutrules.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 2.893891F));
+            this.tableLayoutrules.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 97.10611F));
             this.tableLayoutrules.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 47F));
             this.tableLayoutrules.Size = new System.Drawing.Size(802, 452);
             this.tableLayoutrules.TabIndex = 2;
@@ -78,11 +80,13 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = global::MasterMindGUI.Properties.Resources.maxresdefault;
+            this.BackColor = System.Drawing.Color.Black;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.tableLayoutrules);
+            this.MaximizeBox = false;
             this.Name = "Rules";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MasterMind Règles";
             this.tableLayoutrules.ResumeLayout(false);
             this.tableLayoutrules.PerformLayout();

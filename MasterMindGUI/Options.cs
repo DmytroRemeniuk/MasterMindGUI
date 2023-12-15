@@ -12,10 +12,13 @@ namespace MasterMindGUI
 {
     public partial class Options : Form
     {
+        //les variables à passer vers MasterMind
         public int combLength = 4;
-        int coloursNb;
-        public string colours = "RGBYOCM";
-        public bool showLetters = false;
+        public int coloursNb = 7;
+        public string colours = "RVBJOCM";
+        public bool showLetters = true;
+        public bool showNumbers = false;
+        public int languageChoice;
 
         Menu mainMenu;
         public Options(Menu menu)
@@ -34,40 +37,43 @@ namespace MasterMindGUI
         {
             if(NbColorsBox.Text == "2" || NbColorsBox.Text == "3" || NbColorsBox.Text == "4" || NbColorsBox.Text == "5" || NbColorsBox.Text == "6" || NbColorsBox.Text == "7")
             {
+                //passer la valeur à une variable
                 coloursNb = Convert.ToInt32(NbColorsBox.Text);
-                switch (coloursNb)
+
+                //changer l'affichage de resultat
+                if(rdbNumbers.Checked == true)
                 {
-                    case 2:
-                        colours = "RG";
-                        break;
-                    case 3:
-                        colours = "RGB";
-                        break;
-                    case 4:
-                        colours = "RGBY";
-                        break;
-                    case 5:
-                        colours = "RGBYO";
-                        break;
-                    case 6:
-                        colours = "RGBYOC";
-                        break;
-                    case 7:
-                        colours = "RGBYOCM";
-                        break;
+                    showNumbers = true;
                 }
+                else
+                {
+                    showNumbers = false;
+                }
+
                 //associer des variables
                 mainMenu.colours = colours;
                 mainMenu.combLength = combLength;
                 mainMenu.showLetters = showLetters;
-
+                mainMenu.showNumbers = showNumbers;
+                mainMenu.coloursNb = coloursNb;
                 //retourner au menu
                 this.Hide();
                 mainMenu.Show();
             }
             else
             {
-                MessageBox.Show("Veuillez choisir la valeur existante dans la liste");
+                if(languageChoice == 0)
+                {
+                    MessageBox.Show("Veuillez choisir la valeur existante dans la liste");
+                }
+                if(languageChoice == 1)
+                {
+                    MessageBox.Show("Choose a value from the list, please");
+                }
+                if(languageChoice == 2)
+                {
+                    MessageBox.Show("Шановний, оберіть число зі списку");
+                }
             }
         }
 
@@ -85,13 +91,44 @@ namespace MasterMindGUI
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
         {
-            if(checkBox1.Checked)
+            if(ckBoxShowLetters.Checked)
             {
                 showLetters = true;
             }
             else
             {
                 showLetters = false;
+            }
+        }
+
+        private void Options_VisibleChanged(object sender, EventArgs e)
+        {
+            if(languageChoice == 0)
+            {
+                lblNbColors.Text = "Nombre de couleurs";
+                ckBoxShowLetters.Text = "Afficher les lettres";
+                rdbNumbers.Text = "Afficher le resultat avec les chiffres";
+                rdbPoints.Text = "Afficher le resultat avec les points";
+                lblLength.Text = "Longueur de la combinaison";
+                btnReturn.Text = "Retour";
+            }
+            if(languageChoice == 1)
+            {
+                lblNbColors.Text = "Number of colors";
+                ckBoxShowLetters.Text = "Show letters";
+                rdbNumbers.Text = "Display the result with numbers";
+                rdbPoints.Text = "Display the result with points";
+                lblLength.Text = "Combination length";
+                btnReturn.Text = "Return";
+            }
+            if(languageChoice == 2)
+            {
+                lblNbColors.Text = "Кількість кольорів";
+                ckBoxShowLetters.Text = "Показати літери";
+                rdbNumbers.Text = "Відображати результат цифрами";
+                rdbPoints.Text = "Відображати результат крапками";
+                lblLength.Text = "Довжина послідовності";
+                btnReturn.Text = "Назад";
             }
         }
     }
