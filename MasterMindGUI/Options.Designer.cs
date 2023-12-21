@@ -176,7 +176,7 @@
             this.ckBoxShowLetters.TabIndex = 9;
             this.ckBoxShowLetters.Text = "Afficher les lettres";
             this.ckBoxShowLetters.UseVisualStyleBackColor = false;
-            this.ckBoxShowLetters.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+            this.ckBoxShowLetters.CheckedChanged += new System.EventHandler(this.ckBoxShowLetters_CheckedChanged);
             // 
             // pnlChoice
             // 
@@ -185,16 +185,16 @@
             this.pnlChoice.Controls.Add(this.rdbPoints);
             this.pnlChoice.ForeColor = System.Drawing.Color.White;
             this.pnlChoice.Location = new System.Drawing.Point(58, 196);
-            this.pnlChoice.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pnlChoice.Margin = new System.Windows.Forms.Padding(2);
             this.pnlChoice.Name = "pnlChoice";
-            this.pnlChoice.Size = new System.Drawing.Size(185, 132);
+            this.pnlChoice.Size = new System.Drawing.Size(190, 132);
             this.pnlChoice.TabIndex = 10;
             // 
             // rdbNumbers
             // 
             this.rdbNumbers.AutoSize = true;
             this.rdbNumbers.Location = new System.Drawing.Point(0, 45);
-            this.rdbNumbers.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.rdbNumbers.Margin = new System.Windows.Forms.Padding(2);
             this.rdbNumbers.Name = "rdbNumbers";
             this.rdbNumbers.Size = new System.Drawing.Size(189, 17);
             this.rdbNumbers.TabIndex = 1;
@@ -206,7 +206,7 @@
             this.rdbPoints.AutoSize = true;
             this.rdbPoints.Checked = true;
             this.rdbPoints.Location = new System.Drawing.Point(0, 12);
-            this.rdbPoints.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.rdbPoints.Margin = new System.Windows.Forms.Padding(2);
             this.rdbPoints.Name = "rdbPoints";
             this.rdbPoints.Size = new System.Drawing.Size(183, 17);
             this.rdbPoints.TabIndex = 0;
