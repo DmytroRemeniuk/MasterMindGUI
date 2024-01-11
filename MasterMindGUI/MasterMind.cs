@@ -143,10 +143,14 @@ namespace MasterMindGUI
             {
                 _currentColumn--;
                 resultTable[_currentLine, _currentColumn].BackColor = Color.Gray;
-                resultTable[_currentLine, _currentColumn].ForeColor = Color.Gray;
                 resultTable[_currentLine, _currentColumn].Text = "";
                 //bordure
                 resultTable[_currentLine, _currentColumn].ForeColor = Color.White;
+                //bordure grise pour la colonne prochaine
+                if (!(_currentColumn == combLength - 1))
+                {
+                    resultTable[_currentLine, _currentColumn + 1].ForeColor = Color.Gray;
+                }
             }
             else
             {
@@ -251,7 +255,7 @@ namespace MasterMindGUI
             }
 
             //montrer/cacher les lettres des couleurs
-            if (showLetters == true)
+            if (showLetters)
             {
                 btnRed.ForeColor = Color.Black;
                 btnGreen.ForeColor = Color.Black;
@@ -272,7 +276,7 @@ namespace MasterMindGUI
                 btnMagenta.ForeColor = Color.Magenta;
             }
             //cacher les indices
-            if(showNumbers == true)
+            if(showNumbers)
             {
                 btnExemple1.Hide();
                 btnExemple2.Hide();
@@ -821,15 +825,6 @@ namespace MasterMindGUI
                 {
                     MessageBox.Show("Ви вже вводили цю послідовність, спробуйте іншу");
                 }
-                for(int j = combLength-1; j >= 0; j--)
-                {
-                    resultTable[_currentLine, j].BackColor = Color.Gray;
-                    resultTable[_currentLine, j].ForeColor = Color.Gray;
-                    resultTable[_currentLine, j].Text = "";
-                }
-                _currentColumn = 0;
-                //bordure
-                resultTable[_currentLine, _currentColumn].ForeColor = Color.White;
                 //pour afficher qu'un seul message
                 _noRepRun = true;
             }
