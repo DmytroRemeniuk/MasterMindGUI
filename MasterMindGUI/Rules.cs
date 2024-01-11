@@ -1,4 +1,9 @@
-﻿using System;
+﻿/*ETML
+  Auteur      : Dmytro Remeniuk
+  Date        : 11.01.2024
+  Description : règles du jeu
+*/
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,7 +17,7 @@ namespace MasterMindGUI
 {
     public partial class Rules : Form
     {
-        public int languageChoice;
+        public int languageChoice;//pour récuperer la langue choisie
 
         Menu mainMenu;
         public Rules(Menu menu)
@@ -22,12 +27,22 @@ namespace MasterMindGUI
             mainMenu = menu;
         }
 
+        /// <summary>
+        /// Retourner au menu
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void btnReturn_Click(object sender, EventArgs e)
         {
             this.Hide();
             mainMenu.Show();
         }
 
+        /// <summary>
+        /// Changer la lnguee des règles
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Rules_VisibleChanged(object sender, EventArgs e)
         {
             if(languageChoice == 0)

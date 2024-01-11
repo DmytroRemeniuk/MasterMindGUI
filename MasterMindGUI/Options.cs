@@ -1,4 +1,9 @@
-﻿using System;
+﻿/*ETML
+  Auteur      : Dmytro Remeniuk
+  Date        : 11.01.2024
+  Description : les options pour le jeu
+*/
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -29,7 +34,7 @@ namespace MasterMindGUI
         }
 
         /// <summary>
-        /// pour retourner au menu et donner des variable au jeu
+        /// Pour retourner au menu et donner des variable au jeu
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -78,7 +83,7 @@ namespace MasterMindGUI
         }
 
         /// <summary>
-        /// pour récuperer la valeur des radiobuttons
+        /// Pour récuperer la valeur des radiobuttons qui serent à la longueur d'une combinaison
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -89,6 +94,11 @@ namespace MasterMindGUI
             combLength = Convert.ToInt32(radio.Text);
         }
 
+        /// <summary>
+        /// Changer l'affichage du résultat
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ckBoxShowLetters_CheckedChanged(object sender, EventArgs e)
         {
             if(ckBoxShowLetters.Checked)
@@ -101,6 +111,11 @@ namespace MasterMindGUI
             }
         }
 
+        /// <summary>
+        /// Changer la langue d'options
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Options_VisibleChanged(object sender, EventArgs e)
         {
             if(languageChoice == 0)

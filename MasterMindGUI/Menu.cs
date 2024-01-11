@@ -1,4 +1,9 @@
-﻿using System;
+﻿/*ETML
+  Auteur      : Dmytro Remeniuk
+  Date        : 11.01.2024
+  Description : menu du jeu
+*/
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,6 +20,7 @@ namespace MasterMindGUI
         //lier les formes
         Rules RulesForm;
         Options OptionsForm;
+        #region Variables public
         //pour passer les variables d'Options à MasterMind
         public int combLength;
         public string colours;
@@ -22,6 +28,7 @@ namespace MasterMindGUI
         public bool showLetters;
         public bool showNumbers;
         public int languageChoice = 0;
+        #endregion
 
         public Menu()
         {
@@ -42,7 +49,7 @@ namespace MasterMindGUI
         }
 
         /// <summary>
-        /// ouvrir des règles
+        /// Ouvrir des règles
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -56,7 +63,7 @@ namespace MasterMindGUI
         }
 
         /// <summary>
-        /// ouvrir des options
+        /// Ouvrir des options
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -70,7 +77,7 @@ namespace MasterMindGUI
         }
 
         /// <summary>
-        /// commencer le jeu
+        /// Commencer le jeu
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -163,16 +170,25 @@ namespace MasterMindGUI
             this.Hide();
         }
 
+        /// <summary>
+        /// Démarrage du programme
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void Menu_Load(object sender, EventArgs e)
         {
             //associer des variables
-            //colours = OptionsForm.colours;
             combLength = OptionsForm.combLength;
             showLetters = OptionsForm.showLetters;
             showNumbers = OptionsForm.showNumbers;
             coloursNb = OptionsForm.coloursNb;
         }
 
+        /// <summary>
+        /// Changer la langue
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void language_CheckedChanged(object sender, EventArgs e)
         {
             if (rdbFrench.Checked)

@@ -1,4 +1,9 @@
-﻿using System;
+﻿/*ETML
+  Auteur      : Dmytro Remeniuk
+  Date        : 11.01.2024
+  Description : le jeu MasterMind
+*/
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -170,8 +175,9 @@ namespace MasterMindGUI
         }
         #endregion
 
+        #region Evenements
         /// <summary>
-        /// le jeu-même
+        /// Démarrage du jeu
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -376,7 +382,7 @@ namespace MasterMindGUI
         }
 
         /// <summary>
-        /// valider la réponse
+        /// Valider la réponse
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -418,7 +424,15 @@ namespace MasterMindGUI
                 }
                 if(languageChoice == 2)
                 {
-                    MessageBox.Show("Введіть " + combLength + " кольорів");
+                    //les message différents à cause de spécialité d'une langue ukrainien
+                    if(combLength <= 4)
+                    {
+                        MessageBox.Show("Введіть " + combLength + " кольори");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Введіть " + combLength + " кольорів");
+                    }
                 }
             }
             //vérifier 
@@ -577,7 +591,7 @@ namespace MasterMindGUI
         }
 
         /// <summary>
-        /// pour le débogage
+        /// Pour le débogage/tricher
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
@@ -585,8 +599,9 @@ namespace MasterMindGUI
         {
             Cheats();
         }
+        #endregion
 
-        #region Fonction++
+        #region Fonction++ (click aux boutons d'affichage)
         /// <summary>
         /// fonction++ 1
         /// </summary>
@@ -712,8 +727,9 @@ namespace MasterMindGUI
         }
         #endregion
 
+        #region Méthodes de fonctionnement
         /// <summary>
-        /// créer la combinaison
+        /// Créer la combinaison
         /// </summary>
         void CombCreate()
         {
@@ -725,7 +741,7 @@ namespace MasterMindGUI
         }
 
         /// <summary>
-        /// pour afficher la bonne quantité des boutons des couleurs
+        /// Pour afficher la bonne quantité des boutons des couleurs
         /// </summary>
         void HideButtons()
         {
@@ -789,7 +805,7 @@ namespace MasterMindGUI
         }
 
         /// <summary>
-        /// pour changer le texte de "Tricher"
+        /// Pour changer le texte de "Tricher"
         /// </summary>
         void Cheats()
         {
@@ -807,7 +823,7 @@ namespace MasterMindGUI
         }
 
         /// <summary>
-        /// éviter des doublons
+        /// Eviter des doublons
         /// </summary>
         void Double()
         {
@@ -829,5 +845,6 @@ namespace MasterMindGUI
                 _noRepRun = true;
             }
         }
+        #endregion
     }
 }
